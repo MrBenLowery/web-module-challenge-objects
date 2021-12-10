@@ -51,9 +51,16 @@ const burger = {
   name: "Burger",
   price: 18,
   category: "Lunch",
-
+  discount: function (status) {
+    if (status === 'teacher' || status === 'student') {
+      this.price = this.price * 0.75
+    } else {
+      this.price = this.price * 0.90
+    }
+    return this.price;
+  }
 }
-
+console.log(burger.discount('teacher'));
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -73,7 +80,7 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
-
+// console.log(reviews[5].feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -83,7 +90,7 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
 */
 
 
-
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays"
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -95,9 +102,18 @@ Write a function that creates an object with name, rating, feedback, add the new
   4. should return the resulting array
 */
 
-function addReview(/*Your Code Here */) {
-  /*Your Code Here */
+function addReview(array, name, rating, feedback) {
+  const newReview = {
+    name: name,
+    rating: rating,
+    feedback: feedback,
+  }
+  array.push(newReview);
+  console.log(array);
+  return array;
 }
+// console.log(addReview(reviews, 'Daniela', 5, 'Beautiful atmosphere and wonderful vegan options!'));
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function to return a review based on the index of the review in the array.
