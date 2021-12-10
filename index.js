@@ -53,11 +53,11 @@ const burger = {
   category: "Lunch",
   discount: function (status) {
     if (status === 'teacher' || status === 'student') {
-      this.price = this.price * 0.75
+      return this.price * 0.75
     } else {
-      this.price = this.price * 0.90
+      return this.price * 0.90
     }
-    return this.price;
+
   }
 }
 console.log(burger.discount('teacher'));
@@ -80,7 +80,7 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
-// console.log(reviews[5].feedback);
+console.log(reviews[5].feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -126,8 +126,8 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, number) {
+  return `${array[number].name} gave the restaurant a ${array[number].rating} star review, and their feedback was: ${array[number].feedback}`
 }
 
 
@@ -135,7 +135,7 @@ function getReviewByIndex(/*Your code here*/) {
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Write a function to get information about the most recent (last) review called `getLastReview`
-
+ 
 Use the getLastReview function below to do the following:
   1. Receive an array of objects as a parameter
   2. Return the last index as a string in the format: "{name} gave the restaurant a {rating} star review, and their feedback was: {feedback}"
@@ -145,8 +145,9 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(array) {
+  const last = array[array.length - 1]
+  return `${last.name} gave the restaurant a ${last.rating} star review, and their feedback was: ${last.feedback}`
 }
 
 
@@ -158,7 +159,7 @@ Use the getReviewsByRating function below to do the following:
   1. Receive the array that holds all the reviews
   2. Receive a rating
   3. Return an array with all the reviews in that range
-
+ 
   For example: getReviewByRating(reviews, 4) would return these reviews in the 4 range (4-4.9):
   [
     {name: "Miranda", rating: 4, feedback:"fun trivia and cool vibes"},
@@ -176,7 +177,7 @@ function getReviewByRating(/* code here */) {
 Use the getLongReviews function below to do the following:
   1. Receive the array that holds all the reviews
   2. Return an array with all the reviews that have more than 15 words in their feedback
-
+ 
   For example: getLongReviews(reviews) would return:
   [
     {name: "Wen", rating: 4.5, feedback:"I don't leave my house often, but when I do, it's for this place. Highly reccomend."},
@@ -192,7 +193,7 @@ function getLongReviews(/* code here */) {
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
 This stretch goal does not use the reviews data!  You create your own object in this stretch goal.
-
+ 
 Use the carMaker function below to do the following:
   1. Receive a value representing the odometer (how many miles it's been driven) and use that when creating the object
   2. Create a drive method inside the object that increases the odometer value
@@ -201,7 +202,7 @@ Use the carMaker function below to do the following:
      a. The drive method which, when called, takes a distance value as its parameter
      b. The drive method should also cause the odometer value in the object to be increased by the distance
      c. Then the drive method should return the updated value of the odometer
-
+ 
   For example: Let's say we created the object in the variable car1 with an odometer value of 10.
   Then we called car1.drive(100)
   It would return 110 because it was created with 10 as the odometer and we added 100 to it with the drive method 
